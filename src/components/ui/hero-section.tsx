@@ -1,11 +1,59 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-soil.jpg";
+import { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  const [introComplete, setIntroComplete] = useState(false);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
+
+  useEffect(() => {
+    let scrollBlocked = true;
+    let animationInProgress = false;
+
+    const blockScroll = (e: Event) => {
+      if (scrollBlocked) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (!animationInProgress) {
+          animationInProgress = true;
+          setAnimationTriggered(true);
+          
+          // Liberar scroll após animação (2.5s total)
+          setTimeout(() => {
+            scrollBlocked = false;
+            setIntroComplete(true);
+            document.body.style.overflow = 'auto';
+          }, 2500);
+        }
+        
+        return false;
+      }
+    };
+
+    // Bloquear scroll inicialmente
+    document.body.style.overflow = 'hidden';
+
+    // Escutar eventos de scroll
+    window.addEventListener('wheel', blockScroll, { passive: false });
+    window.addEventListener('touchmove', blockScroll, { passive: false });
+    window.addEventListener('scroll', blockScroll, { passive: false });
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('wheel', blockScroll);
+      window.removeEventListener('touchmove', blockScroll);
+      window.removeEventListener('scroll', blockScroll);
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+    <section className={`hero-section ${animationTriggered ? 'animation-triggered' : ''} ${introComplete ? 'intro-complete' : ''}`}>
+      {/* Background - Verde Sólido Inicial */}
+      <div className="hero-bg-solid"></div>
+      
+      {/* Background - Definitivo (imagem + gradiente) */}
+      <div className="hero-bg-final">
         <img 
           src={heroImage} 
           alt="Solo sustentável com plantas crescendo" 
@@ -16,41 +64,44 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Pre-header */}
-        <div className="animate-fade-in">
-          <p className="text-primary-foreground opacity-90 text-sm md:text-base font-medium mb-6 tracking-wide">
-            Um programa do Ministério da Agricultura (MAPA) em parceria com o IFMT
-          </p>
-        </div>
-        
-        {/* Main Title */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        {/* Main Title - Sempre Visível */}
+        <div className="hero-title">
           <h1 className="heading-xl text-primary-foreground mb-8 leading-tight">
             Solo Vivo <span className="text-secondary">Educa</span>
           </h1>
         </div>
         
-        {/* Subtitle */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <p className="body-lg text-primary-foreground opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Conectando o conhecimento acadêmico à missão de recuperar os solos do Brasil. 
-            Participe de um programa nacional de análise de solos e comece com sua amostra gratuita.
-          </p>
+        {/* Elementos Adicionais - Aparecem na Animação */}
+        <div className="hero-additional-content">
+          {/* Pre-header */}
+          <div className="hero-element" style={{ animationDelay: "0.2s" }}>
+            <p className="text-primary-foreground opacity-90 text-sm md:text-base font-medium mb-6 tracking-wide">
+              Um programa do Ministério da Agricultura (MAPA) em parceria com o IFMT
+            </p>
+          </div>
+          
+          {/* Subtitle */}
+          <div className="hero-element" style={{ animationDelay: "0.6s" }}>
+            <p className="body-lg text-primary-foreground opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Conectando o conhecimento acadêmico à missão de recuperar os solos do Brasil. 
+              Participe de um programa nacional de análise de solos e comece com sua amostra gratuita.
+            </p>
+          </div>
+          
+          {/* CTA Button */}
+          <div className="hero-element" style={{ animationDelay: "1.0s" }}>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              className="px-8 py-4 text-lg font-semibold hover-lift shadow-medium hover:shadow-strong transition-all duration-300"
+            >
+              Faça Parte do Programa
+            </Button>
+          </div>
         </div>
         
-        {/* CTA Button */}
-        <div className="animate-scale-in" style={{ animationDelay: "0.6s" }}>
-          <Button 
-            size="lg" 
-            variant="secondary"
-            className="px-8 py-4 text-lg font-semibold hover-lift shadow-medium hover:shadow-strong transition-all duration-300"
-          >
-            Faça Parte do Programa
-          </Button>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+        {/* Scroll Indicator - Sempre Visível */}
+        <div className="hero-scroll-indicator">
           <div className="w-6 h-10 border-2 border-primary-foreground opacity-60 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-primary-foreground opacity-60 rounded-full mt-2 animate-pulse"></div>
           </div>

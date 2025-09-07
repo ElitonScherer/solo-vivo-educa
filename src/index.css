@@ -193,4 +193,95 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
+
+  /* Hero Section Intro Animation */
+  .hero-section {
+    @apply relative min-h-screen flex items-center justify-center overflow-hidden;
+  }
+
+  .hero-bg-solid {
+    @apply absolute inset-0 z-0 bg-primary;
+    opacity: 1;
+    transition: opacity 1.2s ease-out;
+  }
+
+  .hero-bg-final {
+    @apply absolute inset-0 z-0;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+  }
+
+  .hero-section.animation-triggered .hero-bg-solid {
+    opacity: 0;
+  }
+
+  .hero-section.animation-triggered .hero-bg-final {
+    opacity: 1;
+  }
+
+  .hero-title {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 0.8s ease-out 0.3s forwards;
+  }
+
+  .hero-additional-content {
+    opacity: 0;
+  }
+
+  .hero-section.animation-triggered .hero-additional-content {
+    opacity: 1;
+  }
+
+  .hero-element {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .hero-section.animation-triggered .hero-element {
+    animation: slideInUp 0.6s ease-out forwards;
+  }
+
+  .hero-scroll-indicator {
+    @apply absolute bottom-8 left-1/2 transform -translate-x-1/2;
+    opacity: 0;
+    animation: fadeInFloat 0.8s ease-out 0.5s forwards;
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInFloat {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .hero-scroll-indicator > div {
+    animation: float 3s ease-in-out infinite;
+  }
 }
