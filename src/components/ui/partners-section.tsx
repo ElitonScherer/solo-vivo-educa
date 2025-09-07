@@ -1,8 +1,8 @@
 import { Building2, GraduationCap } from "lucide-react";
 
-const PartnersSection = () => {
+const PartnersSection = ({id,...props}) => {
   return (
-    <section className="py-20 lg:py-32 bg-muted/30">
+    <section id={id} className="py-20 lg:py-32 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in-up">
@@ -57,17 +57,17 @@ const PartnersSection = () => {
           <div className="inline-flex items-center justify-center space-x-8 bg-card/50 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-soft border border-border/50">
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-secondary rounded-full"></div>
-              <span className="text-sm font-medium text-muted-foreground">Programa Oficial</span>
+              <span className="text-sm font-medium text-muted-foreground">MAPA</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-accent rounded-full"></div>
-              <span className="text-sm font-medium text-muted-foreground">Certificado Técnico</span>
+              <span className="text-sm font-medium text-muted-foreground">IFMT</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-primary rounded-full"></div>
-              <span className="text-sm font-medium text-muted-foreground">Impacto Nacional</span>
+              <span className="text-sm font-medium text-muted-foreground">Sociedade</span>
             </div>
           </div>
         </div>

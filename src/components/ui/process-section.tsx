@@ -1,6 +1,6 @@
 import { UserPlus, Smartphone, Send, FileCheck } from "lucide-react";
 
-const ProcessSection = () => {
+const ProcessSection = ({id,...props}) => {
   const steps = [
     {
       icon: UserPlus,
@@ -29,12 +29,12 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-32 bg-background">
+    <section id={id} className="py-20 lg:py-32 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in-up">
           <h2 className="heading-lg text-primary mb-6">
-            Como Funciona
+            Como Funciona ?
           </h2>
           <p className="body-base text-muted-foreground max-w-3xl mx-auto">
             Um processo simples e científico que conecta você diretamente com a tecnologia 

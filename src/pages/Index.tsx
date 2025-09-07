@@ -3,6 +3,7 @@ import HeroSection from "@/components/ui/hero-section";
 import ImpactSection from "@/components/ui/impact-section";
 import ProcessSection from "@/components/ui/process-section";
 import PartnersSection from "@/components/ui/partners-section";
+import Footer from "@/components/ui/footer";
 
 const Index = () => {
   useEffect(() => {
@@ -27,12 +28,13 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
-  return (
+   return (
     <main className="min-h-screen">
       <HeroSection />
-      <ImpactSection />
-      <ProcessSection />
-      <PartnersSection />
+      <ImpactSection id="impacto" />
+      <ProcessSection id="progresso" />
+      <PartnersSection id="parceiros" />
+      <Footer/>
     </main>
   );
 };

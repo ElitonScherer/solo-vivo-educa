@@ -24,7 +24,7 @@ const HeroSection = () => {
             scrollBlocked = false;
             setIntroComplete(true);
             document.body.style.overflow = 'auto';
-          }, 2500);
+          }, 1000);
         }
         
         return false;
@@ -84,7 +84,7 @@ const HeroSection = () => {
           <div className="hero-element" style={{ animationDelay: "0.6s" }}>
             <p className="body-lg text-primary-foreground opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
               Conectando o conhecimento acadêmico à missão de recuperar os solos do Brasil. 
-              Participe de um programa nacional de análise de solos e comece com sua amostra gratuita.
+              Participe de um programa estadual de análise de solos.
             </p>
           </div>
           
@@ -100,13 +100,18 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Scroll Indicator - Sempre Visível */}
-        <div className="hero-scroll-indicator">
-          <div className="w-6 h-10 border-2 border-primary-foreground opacity-60 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary-foreground opacity-60 rounded-full mt-2 animate-pulse"></div>
+       
+      </div>
+       {/* Scroll Indicator - Sempre Visível */}
+        <div className="hero-scroll-indicator flex flex-col items-center space-y-3 mt-16">
+          <p className="text-primary-foreground opacity-70 text-sm font-medium">
+            Deslize para explorar
+          </p>
+          <div className="w-6 h-10 border-2 border-primary-foreground opacity-60 rounded-full flex justify-center relative">
+            <div className="w-1 h-3 bg-primary-foreground opacity-60 rounded-full mt-2 animate-bounce"></div>
           </div>
         </div>
-      </div>
+      
     </section>
   );
 };

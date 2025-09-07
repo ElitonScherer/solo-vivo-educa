@@ -1,9 +1,9 @@
 import { Sprout, GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const ImpactSection = () => {
+const ImpactSection = ({id,...props}) => {
   return (
-    <section className="py-20 lg:py-32 bg-gradient-soft">
+    <section id={id} className="py-20 lg:py-32 bg-gradient-soft">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in-up">
@@ -32,7 +32,7 @@ const ImpactSection = () => {
                     Recuperando Solos, Transformando Vidas
                   </h3>
                   <p className="body-base text-muted-foreground leading-relaxed">
-                    O Solo Vivo Educa faz parte de uma iniciativa do MAPA e do IFMT que oferece 
+                    O Solo Vivo faz parte de uma iniciativa do MAPA que oferece 
                     recuperação de solos para assentados rurais, fortalecendo a agricultura familiar 
                     e a sustentabilidade no campo.
                   </p>
@@ -56,8 +56,7 @@ const ImpactSection = () => {
                   </h3>
                   <p className="body-base text-muted-foreground leading-relaxed">
                     Oferecemos a você, estudante, a mesma tecnologia e expertise para realizar 
-                    uma análise de solo completa, enriquecendo sua formação com dados reais 
-                    e uma experiência de campo única.
+                    uma análise de solo completa, enriquecendo sua formação.
                   </p>
                 </div>
               </div>
