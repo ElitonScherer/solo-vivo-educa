@@ -1,13 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import HeroSection from "@/components/ui/hero-section";
+import ImpactSection from "@/components/ui/impact-section";
+import ProcessSection from "@/components/ui/process-section";
+import PartnersSection from "@/components/ui/partners-section";
 
 const Index = () => {
+  useEffect(() => {
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in-up elements
+    const elements = document.querySelectorAll(".fade-in-up");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <HeroSection />
+      <ImpactSection />
+      <ProcessSection />
+      <PartnersSection />
+    </main>
   );
 };
 
