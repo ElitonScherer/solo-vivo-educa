@@ -11,29 +11,31 @@ const HeroSection = () => {
     let scrollBlocked = true;
     let animationInProgress = false;
 
-    const blockScroll = (e: Event) => {
+    const blockScroll = (e) => {
       if (scrollBlocked) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         if (!animationInProgress) {
           animationInProgress = true;
           setAnimationTriggered(true);
-          
-          // Liberar scroll após animação (2.5s total)
+
+          // Liberar scroll e cursor após 1 segundo
           setTimeout(() => {
             scrollBlocked = false;
             setIntroComplete(true);
             document.body.style.overflow = 'auto';
+            document.body.classList.add('cursor-hidden');
           }, 1000);
         }
-        
+
         return false;
       }
     };
 
-    // Bloquear scroll inicialmente
+    // Bloquear scroll e mostrar o cursor inicialmente
     document.body.style.overflow = 'hidden';
+    document.body.classList.remove('cursor-hidden');
 
     // Escutar eventos de scroll
     window.addEventListener('wheel', blockScroll, { passive: false });
@@ -42,6 +44,7 @@ const HeroSection = () => {
 
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('cursor-hidden');
       window.removeEventListener('wheel', blockScroll);
       window.removeEventListener('touchmove', blockScroll);
       window.removeEventListener('scroll', blockScroll);
@@ -112,7 +115,7 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Indicator - Sempre Visível */}
-      <div className="hero-scroll-indicator flex flex-col items-center space-y-3 mt-16">
+      <div className={`hero-scroll-indicator flex flex-col items-center space-y-3 mt-16 ${introComplete ? 'hidden' : ''}`}>
         <p className="text-primary-foreground opacity-70 text-sm font-medium">
           Deslize para explorar
         </p>

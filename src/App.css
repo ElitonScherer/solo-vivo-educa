@@ -7,7 +7,9 @@
   margin: 0;
   padding: 0;
 }
-
+.cursor-hidden {
+  cursor: none;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
