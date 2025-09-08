@@ -64,7 +64,7 @@ const HeroSection = () => {
       </div>
       
       {/* Logo Solo Vivo - Sempre Visível no Topo */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute top-1 left-1/2 transform -translate-x-1/2 z-20">
         <img 
           src={solovivo} 
           alt="Logo Solo Vivo" 
