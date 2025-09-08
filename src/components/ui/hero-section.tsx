@@ -61,7 +61,7 @@ const HeroSection = () => {
         <img 
           src={heroImage} 
           alt="Solo sustentável com plantas crescendo" 
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-hero opacity-90"></div>
       </div>
