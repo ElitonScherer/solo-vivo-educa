@@ -25,7 +25,6 @@ const HeroSection = () => {
             scrollBlocked = false;
             setIntroComplete(true);
             document.body.style.overflow = 'auto';
-            document.body.classList.add('cursor-hidden');
           }, 1000);
         }
 
@@ -35,7 +34,7 @@ const HeroSection = () => {
 
     // Bloquear scroll e mostrar o cursor inicialmente
     document.body.style.overflow = 'hidden';
-    document.body.classList.remove('cursor-hidden');
+
 
     // Escutar eventos de scroll
     window.addEventListener('wheel', blockScroll, { passive: false });
@@ -43,8 +42,7 @@ const HeroSection = () => {
     window.addEventListener('scroll', blockScroll, { passive: false });
 
     return () => {
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('cursor-hidden');
+
       window.removeEventListener('wheel', blockScroll);
       window.removeEventListener('touchmove', blockScroll);
       window.removeEventListener('scroll', blockScroll);
