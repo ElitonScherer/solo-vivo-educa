@@ -54,7 +54,8 @@ const PartnersSection = ({id,...props}) => {
         
         {/* Trust Indicators */}
         <div className="mt-16 text-center fade-in-up" style={{ animationDelay: "0.6s" }}>
-          <div className="inline-flex items-center justify-center space-x-8 bg-card/50 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-soft border border-border/50">
+          <div className="inline-flex flex-wrap items-center justify-center gap-4 bg-card/50 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-soft border border-border/50">
+
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-secondary rounded-full"></div>
               <span className="text-sm font-medium text-muted-foreground">MAPA</span>
